@@ -1,35 +1,39 @@
-import numpy as np
-import altair as alt
-import pandas as pd
 import streamlit as st
+from datetime import time, datetime
 
-st.header('Polecenie st.write')
+st.header('Polecenie st.slider')
 
 # Przykład 1
 
-st.write('Witaj, *Świecie!* :sunglasses:')
+st.subheader('Suwak')
+
+age = st.slider('Ile masz lat?', 0, 130, 25)
+st.write("Mam ", age, 'lat')
 
 # Przykład 2
 
-st.write(1234)
+st.subheader('Suwak z zakresem')
+
+values = st.slider(
+     'Wybierz zakres wartości',
+     0.0, 100.0, (25.0, 75.0))
+st.write('Wybrany zakres:', values)
 
 # Przykład 3
 
-df = pd.DataFrame({
-     'pierwsza kolumna': [1, 2, 3, 4,5],
-     'druga kolumna': [10, 20, 30, 40,50]
-     })
-st.write(df)
+st.subheader('Suwak z zakresem czasu')
+
+appointment = st.slider(
+     "Zaplanuj wizytę:",
+     value=(time(11, 30), time(12, 45)))
+st.write("Jesteś umówiony na:", appointment)
 
 # Przykład 4
 
-st.write('Poniżej znajduję ramka danych:', df, 'Powyżej znajduje się ramka danych.')
+st.subheader('Suwak z datą i czasem')
 
-# Przykład 5
-
-df2 = pd.DataFrame(
-     np.random.randn(200, 3),
-     columns=['a', 'b', 'c'])
-c = alt.Chart(df2).mark_circle().encode(
-     x='a', y='b', size='c', color='c', tooltip=['a', 'b', 'c'])
-st.write(c)
+start_time = st.slider(
+     "Kiedy zaczynasz?",
+     value=datetime(2020, 1, 1, 9, 30),
+     format="MM/DD/YY - hh:mm")
+st.write("Czas rozpoczęcia:", start_time)
