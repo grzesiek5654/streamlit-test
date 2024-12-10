@@ -1,11 +1,13 @@
 import streamlit as st
 from datetime import time, datetime
 
+
+
 st.header('Polecenie st.slider')
 
 # Przykład 1
 
-st.subheader('Suwak')
+st.subheader('Suwak 3 razy')
 
 age = st.slider('Ile masz lat?', 0, 130, 25)
 st.write("Mam ", age, 'lat')
